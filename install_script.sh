@@ -24,7 +24,7 @@ sudo pacman -S --noconfirm cpupower acpi acpid intel-ucode
 # Create the power management script
 sudo tee /usr/local/bin/power-management.sh << 'EOF'
 #! /bin/bash
-cpupower frequency-set -g powersave -d 0.8G -u 1.2G
+cpupower frequency-set -g powersave -d 0.8G -u 1.8G
 echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
 echo 0 > /sys/devices/system/cpu/cpu7/online
 echo 0 > /sys/devices/system/cpu/cpu6/online
