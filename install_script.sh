@@ -1,8 +1,9 @@
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
-sudo echo "Color" >> /etc/pacman.conf
-sudo echo "ParallelDownloads = 5" >> /etc/pacman.conf
-sudo echo "ILoveCandy" >> /etc/pacman.conf
+# Append to pacman.conf if entries don't exist
+grep -q "^Color" /etc/pacman.conf || sudo echo "Color" >> /etc/pacman.conf
+grep -q "^ParallelDownloads = 5" /etc/pacman.conf || sudo echo "ParallelDownloads = 5" >> /etc/pacman.conf
+grep -q "^ILoveCandy" /etc/pacman.conf || sudo echo "ILoveCandy" >> /etc/pacman.conf
 
 sudo pacman -S --noconfirm reflector git nano
 
@@ -57,13 +58,11 @@ sudo systemctl enable power-management.service
 
 paru -S --noconfirm xf86-video-intel libvdpau-va-gl intel-media-driver sof-firmware nvidia nvidia-utils nvidia-settings
 
-# adjust /etc/environment by adding the following line
-# LIBVA_DRIVER_NAME=iHD
-# VDPAU_DRIVER=va_gl
-
-sudo echo "LIBVA_DRIVER_NAME=iHD" >> /etc/environment
-sudo echo "VDPAU_DRIVER=va_gl" >> /etc/environment
-
+# Set environment variables safely using tee
+sudo tee -a /etc/environment << EOF
+LIBVA_DRIVER_NAME=iHD
+VDPAU_DRIVER=va_gl
+EOF
 
 sudo pacman -S --noconfirm timeshift htop
 
