@@ -68,6 +68,14 @@ EOF
 
 sudo pacman -S --noconfirm timeshift htop
 
+# Create wallpapers directory and download a default wallpaper
+mkdir -p ~/Pictures/Wallpapers
+curl -o ~/Pictures/Wallpapers/default-wallpaper.jpg https://raw.githubusercontent.com/vinceliuice/WhiteSur-wallpapers/main/4k/Monterey-dark.jpg
+
+# Set the wallpaper
+gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/Pictures/Wallpapers/default-wallpaper.jpg"
+gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/Pictures/Wallpapers/default-wallpaper.jpg"
+
 paru -S visual-studio-code-bin google-chrome legcord-bin vlc envycontrol
 
 sudo envycontrol -s integrated
