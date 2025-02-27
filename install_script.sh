@@ -1,23 +1,25 @@
 sudo pacman -Syu --noconfirm
 
-# Append to pacman.conf if entries don't exist
-grep -q "^Color" /etc/pacman.conf || sudo echo "Color" >> /etc/pacman.conf
-grep -q "^ParallelDownloads = 5" /etc/pacman.conf || sudo echo "ParallelDownloads = 5" >> /etc/pacman.conf
-grep -q "^ILoveCandy" /etc/pacman.conf || sudo echo "ILoveCandy" >> /etc/pacman.conf
+# Accelerate pacman
+sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
+sudo echo "ILoveCandy" >> /etc/pacman.conf
 
 sudo pacman -S --noconfirm reflector git nano
 
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-
 sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
+# Install paru AUR helper
 sudo pacman -S --needed --noconfirm base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
+# Install xorg
 sudo pacman -S --noconfirm xorg
 
+# Install GNOME
 sudo pacman -S --noconfirm gnome-shell gdm gnome-console gnome-control-center gnome-keyring gnome-menus gnome-session gnome-settings-daemon gnome-shell-extensions gnome-text-editor nautilus 
 
 sudo systemctl enable gdm.service
@@ -58,6 +60,25 @@ EOF
 # Enable the service
 sudo systemctl enable power-management.service
 
+sudo pacman -S --noconfirm powertop
+
+# Create the powertop service
+sudo tee /etc/systemd/system/powertop.service << EOF
+[Unit]
+Description=Powertop tunings
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/powertop --auto-tune
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Enable the service
+sudo systemctl enable powertop.service
+
 paru -S --noconfirm xf86-video-intel libvdpau-va-gl intel-media-driver sof-firmware nvidia nvidia-utils nvidia-settings
 
 # Set environment variables safely using tee
@@ -76,8 +97,10 @@ curl -o ~/Pictures/Wallpapers/default-wallpaper.jpg https://raw.githubuserconten
 gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/Pictures/Wallpapers/default-wallpaper.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/Pictures/Wallpapers/default-wallpaper.jpg"
 
+# Install vscode, chrome and other apps
 paru -S visual-studio-code-bin google-chrome legcord-bin vlc envycontrol
 
+# Enable the integrated graphics
 sudo envycontrol -s integrated
 
 sudo systemctl reboot
