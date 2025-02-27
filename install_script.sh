@@ -16,6 +16,8 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
+sudo pacman -S --noconfirm xorg
+
 sudo pacman -S --noconfirm gnome-shell gdm gnome-console gnome-control-center gnome-keyring gnome-menus gnome-session gnome-settings-daemon gnome-shell-extensions gnome-text-editor nautilus 
 
 sudo systemctl enable gdm.service
