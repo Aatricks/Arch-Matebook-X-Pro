@@ -100,6 +100,9 @@ gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/
 # Install vscode, chrome and other apps
 paru -S visual-studio-code-bin google-chrome legcord-bin vlc envycontrol
 
+# install uv 
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Enable the integrated graphics
 sudo envycontrol -s integrated
 
