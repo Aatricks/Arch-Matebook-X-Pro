@@ -60,25 +60,17 @@ EOF
 # Enable the service
 sudo systemctl enable power-management.service
 
-sudo pacman -S --noconfirm powertop
+# Install and enable TLP
+sudo pacman -S --noconfirm tlp tlp-rdw smartmontools ethtool
 
-# Create the powertop service
-sudo tee /etc/systemd/system/powertop.service << EOF
-[Unit]
-Description=Powertop tunings
+sudo tlp start
 
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/bin/powertop --auto-tune
+sudo systemctl enable tlp
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
+sudo systemctl enable NetworkManager-dispatcher.service
 
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Enable the service
-sudo systemctl enable powertop.service
-
+# Install video drivers
 paru -S --noconfirm xf86-video-intel libvdpau-va-gl intel-media-driver sof-firmware nvidia nvidia-utils nvidia-settings
 
 # Set environment variables safely using tee
