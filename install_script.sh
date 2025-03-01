@@ -90,7 +90,7 @@ gsettings set org.gnome.desktop.background picture-uri "file:///home/$USER/Pictu
 gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/$USER/Pictures/Wallpapers/default-wallpaper.jpg"
 
 # Install vscode, chrome and other apps
-paru -S visual-studio-code-bin google-chrome legcord-bin vlc envycontrol
+paru -S cursor-bin google-chrome legcord-bin vlc envycontrol
 
 # install uv 
 curl -LsSf https://astral.sh/uv/install.sh | sh
