@@ -71,7 +71,7 @@ sudo systemctl mask systemd-rfkill.socket
 sudo systemctl enable NetworkManager-dispatcher.service
 
 # Install video drivers
-paru -S --noconfirm xf86-video-intel libvdpau-va-gl intel-media-driver sof-firmware nvidia nvidia-utils nvidia-settings
+paru -S --noconfirm xf86-video-intel libvdpau-va-gl intel-media-driver sof-firmware nvidia-dkms nvidia-utils nvidia-settings
 
 # Set environment variables safely using tee
 sudo tee -a /etc/environment << EOF
@@ -97,5 +97,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Enable the integrated graphics
 sudo envycontrol -s integrated
+
+sudo systemctl enable bluetooth
 
 sudo systemctl reboot
