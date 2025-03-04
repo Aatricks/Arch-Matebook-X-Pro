@@ -60,15 +60,86 @@ EOF
 # Enable the service
 sudo systemctl enable power-management.service
 
-# Install and enable TLP
-sudo pacman -S --noconfirm tlp tlp-rdw smartmontools ethtool
+# Install and enable powertop
+sudo pacman -S --noconfirm powertop
 
-sudo tlp start
+sudo tee /etc/systemd/system/powertop.service << EOF
+[Unit]
+Description=Powertop tunings
 
-sudo systemctl enable tlp
-sudo systemctl mask systemd-rfkill.service
-sudo systemctl mask systemd-rfkill.socket
-sudo systemctl enable NetworkManager-dispatcher.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/powertop --auto-tune
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl enable powertop
+
+# Undervolt CPU
+sudo pacman -S intel-undervolt
+
+sudo tee /etc/intel/intel-undervolt.conf << EOF
+# Enable or Disable Triggers (elogind)
+# Usage: enable [yes/no]
+
+enable no
+
+# CPU Undervolting
+# Usage: undervolt ${index} ${display_name} ${undervolt_value}
+# Example: undervolt 2 'CPU Cache' -25.84
+
+undervolt 0 'CPU' -125
+undervolt 1 'GPU' -90
+undervolt 2 'CPU Cache' -125
+undervolt 3 'System Agent' -30
+undervolt 4 'Analog I/O' -30
+
+# Power Limits Alteration
+# Usage: power ${domain} ${short_power_value} ${long_power_value}
+# Power value: ${power}[/${time_window}][:enabled][:disabled]
+# Domains: package
+# Example: power package 45 35
+# Example: power package 45/0.002 35/28
+# Example: power package 45/0.002:disabled 35/28:enabled
+power package 10 5
+
+# Critical Temperature Offset Alteration
+# Usage: tjoffset ${temperature_offset}
+# Example: tjoffset -20
+tjoffset -50
+
+# Energy Versus Performance Preference Switch
+# Usage: hwphint ${mode} ${algorithm} ${load_hint} ${normal_hint}
+# Hints: see energy_performance_available_preferences
+# Modes: switch, force
+# Load algorithm: load:${capture}:${threshold}
+# Power algorithm: power[:${domain}:[gt/lt]:${value}[:[and/or]]...]
+# Capture: single, multi
+# Threshold: CPU usage threshold
+# Domain: RAPL power domain, check with `intel-undervolt measure`
+# Example: hwphint force load:single:0.8 performance balance_performance
+# Example: hwphint switch power:core:gt:8 performance balance_performance
+hwphint switch load:single:0.9 balance_power power
+
+# Daemon Update Interval
+# Usage: interval ${interval_in_milliseconds}
+
+interval 5000
+
+# Daemon Actions
+# Usage: daemon action[:option...]
+# Actions: undervolt, power, tjoffset
+# Options: once
+
+daemon undervolt:once
+daemon power
+daemon tjoffset
+EOF
+
+sudo systemctl enable intel-undervolt
 
 # Install video drivers
 paru -S --noconfirm xf86-video-intel libvdpau-va-gl intel-media-driver sof-firmware nvidia-dkms nvidia-utils nvidia-settings
