@@ -29,7 +29,7 @@ sudo pacman -S --noconfirm cpupower acpi acpid intel-ucode
 # Create the power management script
 sudo tee /usr/local/bin/power-management.sh << 'EOF'
 #! /bin/bash
-cpupower frequency-set -g powersave -d 0.8G -u 1.8G
+cpupower frequency-set -g powersave -d 0.8G -u 1.2G
 echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
 echo 0 > /sys/devices/system/cpu/cpu7/online
 echo 0 > /sys/devices/system/cpu/cpu6/online
@@ -91,9 +91,9 @@ enable no
 # Usage: undervolt ${index} ${display_name} ${undervolt_value}
 # Example: undervolt 2 'CPU Cache' -25.84
 
-undervolt 0 'CPU' -125
+undervolt 0 'CPU' -115
 undervolt 1 'GPU' -90
-undervolt 2 'CPU Cache' -125
+undervolt 2 'CPU Cache' -115
 undervolt 3 'System Agent' -30
 undervolt 4 'Analog I/O' -30
 
