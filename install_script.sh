@@ -60,23 +60,15 @@ EOF
 # Enable the service
 sudo systemctl enable power-management.service
 
-# Install and enable powertop
-sudo pacman -S --noconfirm powertop
+# Install and enable tlp
+sudo pacman -S --noconfirm tlp tlp-rdw smartmontools ethtool
 
-sudo tee /etc/systemd/system/powertop.service << EOF
-[Unit]
-Description=Powertop tunings
+sudo tlp start
 
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/bin/powertop --auto-tune
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl enable powertop
+sudo systemctl enable tlp
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
+sudo systemctl enable NetworkManager-dispatcher.service
 
 # Undervolt CPU
 sudo pacman -S intel-undervolt
