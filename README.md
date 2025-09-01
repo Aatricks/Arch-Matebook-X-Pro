@@ -4,6 +4,9 @@ This repository contains a comprehensive post-installation script (`arch-setup.s
 
 The script automates the setup of a full-featured, optimized, and power-efficient GNOME desktop environment.
 
+⭐ If this project helps you, please give it a star! It helps others discover it too.
+---
+
 ## Usage
 
 1.  **Clone the repository:**
