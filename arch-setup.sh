@@ -127,7 +127,7 @@ INTEL_GPU_MIN_FREQ_ON_AC=300
 INTEL_GPU_MIN_FREQ_ON_BAT=300
 INTEL_GPU_MAX_FREQ_ON_AC=1100
 INTEL_GPU_MAX_FREQ_ON_BAT=600
-INTEL_GPU_BOOST_FREQ_ON_AC=1300
+INTEL_GPU_BOOST_FREQ_ON_AC=1100
 INTEL_GPU_BOOST_FREQ_ON_BAT=600
 PCIE_ASPM_ON_BAT="powersupersave"
 USB_AUTOSUSPEND=1
@@ -251,6 +251,7 @@ install_apps() {
         arch-update \
         papirus-icon-theme \
         otf-monaspace \
+        noto-fonts-emoji \
         gamemode \
         lib32-gamemode \
         lib32-nvidia-utils \
