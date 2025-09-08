@@ -250,21 +250,28 @@ install_apps() {
         gnome-extensions-cli \
         arch-update \
         papirus-icon-theme \
-        otf-monaspace \
-        noto-fonts-emoji \
         gamemode \
         lib32-gamemode \
         lib32-nvidia-utils \
         proton-ge-custom-bin \
         steam 
 
-    
-    fc-cache -f
-    
     arch-update --tray --enable
     systemctl --user enable --now arch-update.timer
 
     sudo usermod -aG gamemode aatricks
+}
+
+install_fonts() {
+    LOG "Installing additional fonts..."
+    if ! command -v paru >/dev/null 2>&1; then install_paru; fi
+    paru -S --noconfirm --needed otf-monaspace \
+        ttf-ms-fonts \
+        ttf-liberation \
+        noto-fonts \
+        noto-fonts-cjk \
+        noto-fonts-emoji
+    fc-cache -f
 }
 
 install_extensions() {
@@ -440,6 +447,7 @@ main() {
     setup_nvidia_containers
     install_uv
     install_extensions
+    install_fonts
 
     LOG "Setup complete."
     read -rp "Reboot now? (y/N): " REPLY || REPLY="n"
