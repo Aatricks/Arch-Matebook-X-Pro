@@ -250,11 +250,14 @@ install_apps() {
         gnome-extensions-cli \
         arch-update \
         papirus-icon-theme \
+        ufw \
         gamemode \
         lib32-gamemode \
         lib32-nvidia-utils \
         proton-ge-custom-bin \
-        steam 
+        steam
+
+    systemctl enable ufw
 
     arch-update --tray --enable
     systemctl --user enable --now arch-update.timer
