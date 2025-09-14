@@ -1,10 +1,10 @@
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/desktop/peripherals/touchpad/speed'
-saved-view='/org/gnome/desktop/peripherals/touchpad/'
+saved-pathbar-path='/desktop/gnome/crypto/'
+saved-view='/'
 show-warning=false
 window-height=500
-window-is-maximized=true
-window-width=540
+window-is-maximized=false
+window-width=757
 
 [com/raggesilver/BlackBox]
 custom-shell-command='/run/current-system/sw/bin/fish'
@@ -33,6 +33,10 @@ button-layout='appmenu:minimize,maximize,close'
 [org/fedorahosted/background-logo-extension]
 logo-position='bottom-right'
 
+[org/gnome/Console]
+last-window-maximised=false
+last-window-size=(652, 480)
+
 [org/gnome/GWeather4]
 temperature-unit='centigrade'
 
@@ -46,6 +50,7 @@ logout-prompt=false
 
 [org/gnome/TextEditor]
 indent-style='space'
+last-save-directory='file:///home/aatricks/Documents/GestionP'
 restore-session=true
 show-right-margin=false
 style-scheme='Adwaita'
@@ -58,17 +63,35 @@ window-height=572
 window-maximized=false
 window-width=807
 
+[org/gnome/baobab/ui]
+is-maximized=false
+window-size=(960, 600)
+
+[org/gnome/calculator]
+base=10
+button-mode='basic'
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+window-maximized=false
+window-size=(396, 616)
+
 [org/gnome/control-center]
 last-panel='power'
-window-state=(980, 640, false)
+window-state=(512, 536, false)
 
 [org/gnome/desktop/app-folders]
-folder-children=['System', 'Utilities', 'YaST', 'Pardus', 'SysApps']
+folder-children=['System', 'Utilities', 'YaST', 'Pardus', 'SysApps', 'c7ad0a82-cd08-4e1d-80ec-a486732614ce']
 
 [org/gnome/desktop/app-folders/folders/7a6f3e22-a6b9-4399-ae1c-6a1adf1da5d8]
 apps=['org.gnome.Extensions.desktop', 'org.gnome.Settings.desktop', 'org.gnome.FileRoller.desktop', 'cmake-gui.desktop', 'htop.desktop', 'fish.desktop', 'nixos-manual.desktop', 'vlc.desktop', 'io.github.Foldex.AdwSteamGtk.desktop']
 name='SysApps'
 translate=false
+
+[org/gnome/desktop/app-folders/folders/8f9195c3-1852-418c-a6f0-bd9d2b14a3cf]
+apps=['bvnc.desktop', 'bssh.desktop', 'avahi-discover.desktop', 'qv4l2.desktop', 'qvidcap.desktop']
+name='Internet'
 
 [org/gnome/desktop/app-folders/folders/Pardus]
 categories=['X-Pardus-Apps']
@@ -76,7 +99,7 @@ name='X-Pardus-Apps.directory'
 translate=true
 
 [org/gnome/desktop/app-folders/folders/SysApps]
-apps=['org.gnome.Extensions.desktop', 'org.gnome.Settings.desktop', 'org.gnome.FileRoller.desktop', 'cmake-gui.desktop', 'htop.desktop', 'fish.desktop', 'nixos-manual.desktop', 'vlc.desktop', 'io.github.Foldex.AdwSteamGtk.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Totem.desktop', 'yelp.desktop', 'org.gnome.Ptyxis.desktop', 'nvidia-settings.desktop']
+apps=['org.gnome.Extensions.desktop', 'org.gnome.Settings.desktop', 'org.gnome.FileRoller.desktop', 'cmake-gui.desktop', 'htop.desktop', 'fish.desktop', 'nixos-manual.desktop', 'vlc.desktop', 'io.github.Foldex.AdwSteamGtk.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Totem.desktop', 'yelp.desktop', 'org.gnome.Ptyxis.desktop', 'nvidia-settings.desktop', 'org.gnome.Console.desktop']
 
 [org/gnome/desktop/app-folders/folders/System]
 apps=['org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Logs.desktop', 'org.gnome.SystemMonitor.desktop']
@@ -84,7 +107,7 @@ name='X-GNOME-Shell-System.directory'
 translate=true
 
 [org/gnome/desktop/app-folders/folders/Utilities]
-apps=['org.gnome.Connections.desktop', 'org.gnome.Evince.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'ca.desrt.dconf-editor.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Calculator.desktop', 'page.tesk.Refine.desktop']
+apps=['org.gnome.Connections.desktop', 'org.gnome.Evince.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'ca.desrt.dconf-editor.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Calculator.desktop', 'page.tesk.Refine.desktop', 'arch-update-tray.desktop', 'arch-update.desktop']
 name='X-GNOME-Shell-Utilities.directory'
 translate=true
 
@@ -93,13 +116,17 @@ categories=['X-SuSE-YaST']
 name='suse-yast.directory'
 translate=true
 
+[org/gnome/desktop/app-folders/folders/c7ad0a82-cd08-4e1d-80ec-a486732614ce]
+apps=['bvnc.desktop', 'bssh.desktop', 'avahi-discover.desktop', 'qv4l2.desktop', 'qvidcap.desktop']
+name='Internet'
+
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
 picture-uri='file:///home/aatricks/.config/background'
 picture-uri-dark='file:///home/aatricks/.config/background'
-primary-color='#241f31'
-secondary-color='#000000'
+primary-color='#000000000000'
+secondary-color='#000000000000'
 
 [org/gnome/desktop/break-reminders/eyesight]
 play-sound=true
@@ -114,21 +141,25 @@ automatic-timezone=true
 
 [org/gnome/desktop/input-sources]
 current=uint32 0
-sources=[('xkb', 'us')]
+mru-sources=[('xkb', 'us')]
+sources=[('xkb', 'us'), ('xkb', 'fr+azerty')]
 xkb-options=@as []
 
 [org/gnome/desktop/interface]
-accent-color='purple'
+accent-color='slate'
 clock-format='24h'
 color-scheme='prefer-dark'
+document-font-name='Adwaita Mono 11'
+font-name='Adwaita Sans 11'
 gtk-theme='Adwaita'
 icon-theme='Papirus'
+monospace-font-name='Adwaita Mono 11'
 show-battery-percentage=true
 text-scaling-factor=0.94999999999999996
 toolbar-style='text'
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-nautilus', 'vesktop', 'ca-desrt-dconf-editor', 'com-raggesilver-blackbox', 'dev-vencord-vesktop', 'org-gnome-software', 'com-valvesoftware-steam', 'com-spotify-client', 'org-zealdocs-zeal']
+application-children=['gnome-power-panel', 'org-gnome-nautilus', 'vesktop', 'ca-desrt-dconf-editor', 'com-raggesilver-blackbox', 'dev-vencord-vesktop', 'org-gnome-software', 'com-valvesoftware-steam', 'com-spotify-client', 'org-zealdocs-zeal', 'org-gnome-console', 'zen', 'org-gnome-extensions']
 
 [org/gnome/desktop/notifications/application/ca-desrt-dconf-editor]
 application-id='ca.desrt.dconf-editor.desktop'
@@ -148,6 +179,12 @@ application-id='dev.vencord.Vesktop.desktop'
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-console]
+application-id='org.gnome.Console.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-extensions]
+application-id='org.gnome.Extensions.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-nautilus]
 application-id='org.gnome.Nautilus.desktop'
 
@@ -159,6 +196,9 @@ application-id='org.zealdocs.Zeal.desktop'
 
 [org/gnome/desktop/notifications/application/vesktop]
 application-id='vesktop.desktop'
+
+[org/gnome/desktop/notifications/application/zen]
+application-id='zen.desktop'
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
@@ -178,9 +218,9 @@ report-technical-problems=false
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
-primary-color='#241f31'
-secondary-color='#000000'
+picture-uri='file:///home/aatricks/.local/share/backgrounds/2025-08-25-15-41-00-drawingsandstuff-lonely-tree.png'
+primary-color='#000000000000'
+secondary-color='#000000000000'
 
 [org/gnome/desktop/search-providers]
 enabled=['org.gnome.Weather.desktop']
@@ -217,16 +257,26 @@ show-delete-permanently=true
 initial-size=(890, 550)
 initial-size-file-chooser=(890, 550)
 
+[org/gnome/nm-applet/eap/8265e4e3-254f-471d-b352-5f7fb2575f09]
+ignore-ca-cert=true
+ignore-phase2-ca-cert=false
+
 [org/gnome/portal/filechooser/brave-browser]
-last-folder-path='/home/aatricks/Documents/fichierWin'
+last-folder-path='/home/aatricks/Downloads'
 
 [org/gnome/portal/filechooser/code-insiders]
-last-folder-path='/home/aatricks/Downloads'
+last-folder-path='/home/aatricks/Documents/Web'
 
 [org/gnome/portal/filechooser/code]
 last-folder-path='/home/aatricks/config'
 
 [org/gnome/portal/filechooser/com.brave.Browser]
+last-folder-path='/home/aatricks/Downloads'
+
+[org/gnome/portal/filechooser/dev.vencord.Vesktop]
+last-folder-path='/home/aatricks/Documents'
+
+[org/gnome/portal/filechooser/org.chromium.Chromium]
 last-folder-path='/home/aatricks/Downloads'
 
 [org/gnome/portal/filechooser/org.fedoraproject.MediaWriter]
@@ -236,11 +286,19 @@ last-folder-path='/home/aatricks/Downloads'
 last-folder-path='/home/aatricks/Downloads'
 
 [org/gnome/portal/filechooser/org.gnome.TextEditor]
-last-folder-path='/home/aatricks/Downloads'
+last-folder-path='/home/aatricks/Documents/GestionP'
 
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
 night-light-schedule-automatic=false
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Shift>space'
+command='vicinae'
+name='vicinae'
 
 [org/gnome/settings-daemon/plugins/power]
 ambient-enabled=false
@@ -248,14 +306,15 @@ sleep-inactive-ac-timeout=3600
 sleep-inactive-battery-timeout=900
 
 [org/gnome/shell]
-app-picker-layout=[{'Utilities': <{'position': <0>}>, 'SysApps': <{'position': <1>}>, 'org.gnome.TextEditor.desktop': <{'position': <2>}>, 'org.gnome.Nautilus.desktop': <{'position': <3>}>, 'com.valvesoftware.Steam.desktop': <{'position': <4>}>, 'org.zealdocs.Zeal.desktop': <{'position': <5>}>, 'org.gnome.Software.desktop': <{'position': <6>}>, 'io.github.mhogomchungu.media-downloader.desktop': <{'position': <7>}>}]
+app-picker-layout=[{'c7ad0a82-cd08-4e1d-80ec-a486732614ce': <{'position': <0>}>, 'Utilities': <{'position': <1>}>, 'SysApps': <{'position': <2>}>, 'org.gnome.TextEditor.desktop': <{'position': <3>}>, 'org.gnome.Nautilus.desktop': <{'position': <4>}>, 'org.zealdocs.Zeal.desktop': <{'position': <5>}>, 'steam.desktop': <{'position': <6>}>, 'com.spotify.Client.desktop': <{'position': <7>}>, 'dev.vencord.Vesktop.desktop': <{'position': <8>}>, 'brave-browser.desktop': <{'position': <9>}>}]
 disable-user-extensions=false
 disabled-extensions=['window-list@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'caffeine@patapon.info', 'appindicatorsupport@rgcjonas.gmail.com', 'light-style@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'quick-settings-audio-panel@rayzeq.github.io', 'weatheroclock@CleoMenezesJr.github.io', 'GPU_profile_selector@lorenzo9904.gmail.com']
-favorite-apps=['dev.vencord.Vesktop.desktop', 'com.spotify.Client.desktop', 'com.brave.Browser.desktop', 'com.raggesilver.BlackBox.desktop', 'code-insiders.desktop']
+enabled-extensions=['blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'caffeine@patapon.info', 'appindicatorsupport@rgcjonas.gmail.com', 'light-style@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'quick-settings-audio-panel@rayzeq.github.io', 'weatheroclock@CleoMenezesJr.github.io', 'GPU_profile_selector@lorenzo9904.gmail.com', 'arch-update@RaphaelRochet', 'vicinae@dagimg-dot']
+favorite-apps=['com.raggesilver.BlackBox.desktop', 'zen.desktop', 'code-insiders.desktop']
 welcome-dialog-last-shown-version='48.2'
 
 [org/gnome/shell/extensions/blur-my-shell]
+hacks-level=0
 settings-version=2
 
 [org/gnome/shell/extensions/blur-my-shell/appfolder]
@@ -295,6 +354,7 @@ sigma=30
 
 [org/gnome/shell/extensions/caffeine]
 indicator-position-max=2
+restore-state=true
 user-enabled=true
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -318,6 +378,9 @@ layout=[['gnome@main', 'quick-settings-audio-panel@rayzeq.github.io/main']]
 [org/gnome/shell/extensions/quick-settings-audio-panel]
 profiles-renames={'Built-in Audio': {'off': ('Off', 'Off'), 'pro-audio': ('Pro Audio', 'Pro Audio'), 'input:analog-stereo': ('Analog Stereo Input', 'Analog Stereo Input'), 'output:hdmi-surround71-extra2': ('Digital Surround 7.1 (HDMI 3) Output', 'Digital Surround 7.1 (HDMI 3) Output'), 'output:hdmi-surround-extra2': ('Digital Surround 5.1 (HDMI 3) Output', 'Digital Surround 5.1 (HDMI 3) Output'), 'output:hdmi-surround71-extra1': ('Digital Surround 7.1 (HDMI 2) Output', 'Digital Surround 7.1 (HDMI 2) Output'), 'output:hdmi-surround-extra1': ('Digital Surround 5.1 (HDMI 2) Output', 'Digital Surround 5.1 (HDMI 2) Output'), 'output:hdmi-surround71-extra2+input:analog-stereo': ('Digital Surround 7.1 (HDMI 3) Output + Analog Stereo Input', 'Digital Surround 7.1 (HDMI 3) Output + Analog Stereo Input'), 'output:hdmi-surround-extra2+input:analog-stereo': ('Digital Surround 5.1 (HDMI 3) Output + Analog Stereo Input', 'Digital Surround 5.1 (HDMI 3) Output + Analog Stereo Input'), 'output:hdmi-surround71-extra1+input:analog-stereo': ('Digital Surround 7.1 (HDMI 2) Output + Analog Stereo Input', 'Digital Surround 7.1 (HDMI 2) Output + Analog Stereo Input'), 'output:hdmi-surround-extra1+input:analog-stereo': ('Digital Surround 5.1 (HDMI 2) Output + Analog Stereo Input', 'Digital Surround 5.1 (HDMI 2) Output + Analog Stereo Input'), 'output:hdmi-surround71': ('Digital Surround 7.1 (HDMI) Output', 'Digital Surround 7.1 (HDMI) Output'), 'output:hdmi-surround': ('Digital Surround 5.1 (HDMI) Output', 'Digital Surround 5.1 (HDMI) Output'), 'output:hdmi-surround71+input:analog-stereo': ('Digital Surround 7.1 (HDMI) Output + Analog Stereo Input', 'Digital Surround 7.1 (HDMI) Output + Analog Stereo Input'), 'output:hdmi-surround+input:analog-stereo': ('Digital Surround 5.1 (HDMI) Output + Analog Stereo Input', 'Digital Surround 5.1 (HDMI) Output + Analog Stereo Input'), 'output:analog-surround-40': ('Analog Surround 4.0 Output', 'Analog Surround 4.0 Output'), 'output:analog-surround-40+input:analog-stereo': ('Analog Surround 4.0 Output + Analog Stereo Input', 'Analog Surround 4.0 Output + Analog Stereo Input'), 'output:analog-surround-21': ('Analog Surround 2.1 Output', 'Analog Surround 2.1 Output'), 'output:analog-surround-21+input:analog-stereo': ('Analog Surround 2.1 Output + Analog Stereo Input', 'Analog Surround 2.1 Output + Analog Stereo Input'), 'output:hdmi-stereo-extra2': ('Digital Stereo (HDMI 3) Output', 'Digital Stereo (HDMI 3) Output'), 'output:hdmi-stereo-extra1': ('Digital Stereo (HDMI 2) Output', 'Digital Stereo (HDMI 2) Output'), 'output:hdmi-stereo-extra2+input:analog-stereo': ('Digital Stereo (HDMI 3) Output + Analog Stereo Input', 'Digital Stereo (HDMI 3) Output + Analog Stereo Input'), 'output:hdmi-stereo-extra1+input:analog-stereo': ('Digital Stereo (HDMI 2) Output + Analog Stereo Input', 'Digital Stereo (HDMI 2) Output + Analog Stereo Input'), 'output:hdmi-stereo': ('Digital Stereo (HDMI) Output', 'Digital Stereo (HDMI) Output'), 'output:hdmi-stereo+input:analog-stereo': ('Digital Stereo (HDMI) Output + Analog Stereo Input', 'Digital Stereo (HDMI) Output + Analog Stereo Input'), 'output:analog-stereo': ('Analog Stereo Output', 'Analog Stereo Output'), 'output:analog-stereo+input:analog-stereo': ('Analog Stereo Duplex', 'Analog Stereo Duplex')}, 'AirPods Pro': {'off': ('Off', 'Off'), 'headset-head-unit': ('Headset Head Unit (HSP/HFP, codec CVSD)', 'Headset Head Unit (HSP/HFP, codec CVSD)'), 'a2dp-sink-sbc_xq': ('High Fidelity Playback (A2DP Sink, codec SBC-XQ)', 'High Fidelity Playback (A2DP Sink, codec SBC-XQ)'), 'a2dp-sink-sbc': ('High Fidelity Playback (A2DP Sink, codec SBC)', 'High Fidelity Playback (A2DP Sink, codec SBC)'), 'a2dp-sink': ('High Fidelity Playback (A2DP Sink, codec AAC)', 'High Fidelity Playback (A2DP Sink, codec AAC)')}}
 version=2
+
+[org/gnome/shell/extensions/vicinae]
+show-status-indicator=false
 
 [org/gnome/shell/extensions/weather-oclock]
 weather-after-clock=true

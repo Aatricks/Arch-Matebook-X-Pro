@@ -119,10 +119,10 @@ CPU_BOOST_ON_AC=1
 CPU_BOOST_ON_BAT=1
 CPU_HWP_DYN_BOOST_ON_AC=1
 CPU_HWP_DYN_BOOST_ON_BAT=1
-# CPU_SCALING_MIN_FREQ_ON_AC=400000
-# CPU_SCALING_MAX_FREQ_ON_AC=2700000
-# CPU_SCALING_MIN_FREQ_ON_BAT=400000
-# CPU_SCALING_MAX_FREQ_ON_BAT=2700000
+CPU_SCALING_MIN_FREQ_ON_AC=400000
+CPU_SCALING_MAX_FREQ_ON_AC=3400000
+CPU_SCALING_MIN_FREQ_ON_BAT=400000
+CPU_SCALING_MAX_FREQ_ON_BAT=2700000
 INTEL_GPU_MIN_FREQ_ON_AC=300
 INTEL_GPU_MIN_FREQ_ON_BAT=300
 INTEL_GPU_MAX_FREQ_ON_AC=1100
@@ -242,7 +242,7 @@ install_apps() {
     if ! command -v paru >/dev/null 2>&1; then install_paru; fi
     paru -S --noconfirm --needed \
         visual-studio-code-insiders-bin \
-        brave-bin \
+        zen-browser-bin \
         vlc \
         envycontrol \
         flatpak \
