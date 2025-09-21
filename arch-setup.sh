@@ -201,7 +201,7 @@ install_video_drivers() {
     if lspci | grep -qi nvidia; then
         LOG "NVIDIA GPU detected. Installing drivers..."
         sudo pacman -S --noconfirm --needed linux-headers
-        sudo pacman -S --noconfirm --needed nvidia-dkms nvidia-utils nvidia-settings
+        sudo pacman -S --noconfirm --needed nvidia nvidia-utils nvidia-settings
     else
         LOG "No NVIDIA GPU detected; skipping NVIDIA drivers."
     fi
