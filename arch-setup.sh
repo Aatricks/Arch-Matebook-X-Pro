@@ -106,10 +106,10 @@ configure_tlp() {
     sudo tee /etc/tlp.d/99-custom.conf >/dev/null <<'EOF'
 # TLP custom config
 CPU_DRIVER_OPMODE_ON_AC="active"
-CPU_DRIVER_OPMODE_ON_BAT="actvie"
+CPU_DRIVER_OPMODE_ON_BAT="active"
 CPU_SCALING_GOVERNOR_ON_AC="performance"
 CPU_SCALING_GOVERNOR_ON_BAT="powersave"
-CPU_ENERGY_PERF_POLICY_ON_AC="performance"
+CPU_ENERGY_PERF_POLICY_ON_AC="default"
 CPU_ENERGY_PERF_POLICY_ON_BAT="power"
 PLATFORM_PROFILE_ON_AC="performance"
 PLATFORM_PROFILE_ON_BAT="low-power"
@@ -119,16 +119,16 @@ CPU_BOOST_ON_AC=1
 CPU_BOOST_ON_BAT=1
 CPU_HWP_DYN_BOOST_ON_AC=1
 CPU_HWP_DYN_BOOST_ON_BAT=1
-CPU_SCALING_MIN_FREQ_ON_AC=400000
-CPU_SCALING_MAX_FREQ_ON_AC=3400000
-CPU_SCALING_MIN_FREQ_ON_BAT=400000
-CPU_SCALING_MAX_FREQ_ON_BAT=2700000
-INTEL_GPU_MIN_FREQ_ON_AC=300
-INTEL_GPU_MIN_FREQ_ON_BAT=300
-INTEL_GPU_MAX_FREQ_ON_AC=1100
-INTEL_GPU_MAX_FREQ_ON_BAT=600
-INTEL_GPU_BOOST_FREQ_ON_AC=1100
-INTEL_GPU_BOOST_FREQ_ON_BAT=600
+# CPU_SCALING_MIN_FREQ_ON_AC=400000
+# CPU_SCALING_MAX_FREQ_ON_AC=3400000
+# CPU_SCALING_MIN_FREQ_ON_BAT=400000
+# CPU_SCALING_MAX_FREQ_ON_BAT=2700000
+# INTEL_GPU_MIN_FREQ_ON_AC=300
+# INTEL_GPU_MIN_FREQ_ON_BAT=300
+# INTEL_GPU_MAX_FREQ_ON_AC=1100
+# INTEL_GPU_MAX_FREQ_ON_BAT=600
+# INTEL_GPU_BOOST_FREQ_ON_AC=1100
+# INTEL_GPU_BOOST_FREQ_ON_BAT=600
 PCIE_ASPM_ON_BAT="powersupersave"
 USB_AUTOSUSPEND=1
 RUNTIME_PM_ON_AC="auto"
@@ -242,6 +242,7 @@ install_apps() {
     if ! command -v paru >/dev/null 2>&1; then install_paru; fi
     paru -S --noconfirm --needed \
         visual-studio-code-insiders-bin \
+        blackbox-terminal \
         zen-browser-bin \
         vlc \
         envycontrol \
@@ -314,7 +315,6 @@ install_flatpaks() {
         io.github.Foldex.AdwSteamGtk \
         org.zealdocs.Zeal \
         com.spotify.Client \
-        com.raggesilver.BlackBox \
         org.gnome.Extensions || WARN "Some Flatpak installs may have failed"
 }
 
