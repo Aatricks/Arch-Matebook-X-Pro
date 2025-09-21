@@ -460,3 +460,8 @@ main() {
         LOG "Please reboot later to ensure all changes take effect."
     fi
 }
+
+# Only run main if the script is executed directly (not sourced)
+if [[ "${BASH_SOURCE[0]-}" == "$0" ]]; then
+    main "$@"
+fi
