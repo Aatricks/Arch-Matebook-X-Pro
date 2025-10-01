@@ -157,10 +157,10 @@ undervolt 2 'CPU Cache' -95
 undervolt 3 'System Agent' -30
 undervolt 4 'Analog I/O' -30
 
-power package 18/5 15/60
+# power package 18/5 15/60
 
 # Energy Versus Performance Preference Switch
-#hwphint switch load:single:0.9 balance_power power
+# hwphint switch load:single:0.9 balance_power power
 
 # Daemon interval
 interval 5000
@@ -270,11 +270,13 @@ install_extensions() {
         gext install \
             dash-to-dock@micxgx.gmail.com \
             caffeine@patapon.info \
-            blur-my-shell@aunetx \
             appindicatorsupport@rgcjonas.gmail.com \
             weatheroclock@CleoMenezesJr.github.io \
             quick-settings-audio-panel@rayzeq.github.io \
-            light-style@gnome-shell-extensions.gcampax.github.com 
+            transparent-top-bar@ftpix.com \
+            tiling-assistant@leleat-on-github
+        
+        # gext install blur-my-shell@aunetx 
     fi
 }
 
@@ -382,7 +384,9 @@ setup_nvidia_containers() {
     if lspci | grep -qi nvidia; then
         read -rp "Install NVIDIA Container Toolkit for Podman/Docker? (y/N): " REPLY || REPLY="n"
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-            sudo pacman -S --noconfirm --needed podman podman-compose
+            sudo pacman -S --noconfirm --needed docker docker-compose
+            sudo systemctl enable docker.service || true
+            sudo systemctl enable docker.socket || true
             if command -v paru >/dev/null 2>&1; then
                 paru -S --noconfirm --needed nvidia-container-toolkit || WARN "Failed to install nvidia-container-toolkit"
             else
