@@ -4,7 +4,6 @@ This repository contains a comprehensive post-installation script (`arch-setup.s
 
 The script automates the setup of a full-featured, optimized, and power-efficient GNOME desktop environment.
 
-⭐ If this project helps you, please give it a star! It helps others discover it too.
 ---
 
 ## Usage
@@ -82,3 +81,5 @@ The script is broken down into logical functions for clarity and customization.
 
 After the script completes, it will ask if you want to reboot. A reboot is recommended to ensure all changes, services, and the new default shell take effect.
 
+> [!TIP]
+> ⭐ If this project helps you, please give it a star! It helps others discover it too.
