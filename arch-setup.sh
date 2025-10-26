@@ -105,34 +105,6 @@ configure_tlp() {
     sudo mkdir -p /etc/tlp.d
     sudo tee /etc/tlp.d/99-custom.conf >/dev/null <<'EOF'
 # TLP custom config
-CPU_DRIVER_OPMODE_ON_AC="active"
-CPU_DRIVER_OPMODE_ON_BAT="active"
-CPU_SCALING_GOVERNOR_ON_AC="performance"
-CPU_SCALING_GOVERNOR_ON_BAT="powersave"
-CPU_ENERGY_PERF_POLICY_ON_AC="default"
-CPU_ENERGY_PERF_POLICY_ON_BAT="power"
-PLATFORM_PROFILE_ON_AC="performance"
-PLATFORM_PROFILE_ON_BAT="low-power"
-WIFI_PWR_ON_AC="on"
-WIFI_PWR_ON_BAT="on"
-RUNTIME_PM_ON_AC=auto
-RUNTIME_PM_ON_BAT=auto
-CPU_BOOST_ON_AC=1
-CPU_BOOST_ON_BAT=0
-CPU_HWP_DYN_BOOST_ON_AC=1
-CPU_HWP_DYN_BOOST_ON_BAT=0
-INTEL_GPU_MIN_FREQ_ON_AC=300
-INTEL_GPU_MIN_FREQ_ON_BAT=300
-INTEL_GPU_MAX_FREQ_ON_AC=1100
-INTEL_GPU_MAX_FREQ_ON_BAT=550
-INTEL_GPU_BOOST_FREQ_ON_AC=1100
-INTEL_GPU_BOOST_FREQ_ON_BAT=700
-CPU_MIN_PERF_ON_AC=0
-CPU_MAX_PERF_ON_AC=100
-CPU_MIN_PERF_ON_BAT=0
-CPU_MAX_PERF_ON_BAT=60
-PCIE_ASPM_ON_BAT="powersupersave"
-USB_AUTOSUSPEND=1
 RESTORE_DEVICE_STATE_ON_STARTUP=1
 START_CHARGE_THRESH_BAT0=65
 STOP_CHARGE_THRESH_BAT0=80
@@ -169,8 +141,6 @@ enable no
 undervolt 0 'CPU' -80
 undervolt 1 'GPU' -70
 undervolt 2 'CPU Cache' -80
-undervolt 3 'System Agent' -30
-undervolt 4 'Analog I/O' -30
 
 # power package 18/5 15/60
 
@@ -206,21 +176,6 @@ install_video_drivers() {
     fi
 }
 
-# --- System-wide environment ---
-set_environment_vars() {
-    LOG "Setting video acceleration environment variables..."
-    add_env() {
-        local key="$1"; local val="$2"
-        if grep -q "^${key}=" /etc/environment; then
-            sudo sed -i "s#^${key}=.*#${key}=${val}#" /etc/environment
-        else
-            echo "${key}=${val}" | sudo tee -a /etc/environment >/dev/null
-        fi
-    }
-    add_env LIBVA_DRIVER_NAME iHD
-    add_env VDPAU_DRIVER va_gl
-}
-
 # --- GNOME settings restore ---
 apply_gnome_settings() {
     LOG "Applying GNOME settings if dump present..."
@@ -242,6 +197,7 @@ install_apps() {
     paru -S --noconfirm --needed \
         visual-studio-code-insiders-bin \
         blackbox-terminal \
+        vesktop-bin \
         zen-browser-bin \
         envycontrol \
         flatpak \
@@ -308,13 +264,8 @@ install_flatpaks() {
     fi
 
     flatpak install -y flathub \
-        dev.vencord.Vesktop \
         com.mattjakeman.ExtensionManager \
-        ca.desrt.dconf-editor \
         page.tesk.Refine \
-        io.github.Foldex.AdwSteamGtk \
-        org.zealdocs.Zeal \
-        com.spotify.Client \
         org.gnome.Extensions || WARN "Some Flatpak installs may have failed"
 }
 
