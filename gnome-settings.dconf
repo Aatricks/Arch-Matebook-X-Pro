@@ -11,12 +11,13 @@ disable-text-shadow=true
 transparency=0
 
 [com/raggesilver/BlackBox]
+command-as-login-shell=false
 custom-shell-command=''
 delay-before-showing-floating-controls=uint32 100
 easy-copy-paste=true
 floating-controls=true
 floating-controls-hover-area=uint32 10
-font='Adwaita Mono 12'
+font='Monaspace Krypton 12'
 headerbar-drag-area=false
 opacity=uint32 90
 pretty=true
@@ -26,7 +27,7 @@ show-headerbar=false
 show-scrollbars=false
 terminal-bell=false
 terminal-padding=(uint32 5, uint32 5, uint32 5, uint32 5)
-theme-bold-is-bright=false
+theme-bold-is-bright=true
 theme-dark='Dracula'
 use-custom-command=false
 window-height=uint32 439
@@ -45,6 +46,10 @@ last-window-size=(652, 480)
 [org/gnome/GWeather4]
 temperature-unit='centigrade'
 
+[org/gnome/MultiWriter]
+filename='/home/aatricks/Downloads/archlinux-2025.10.01-x86_64.iso'
+show-warning=false
+
 [org/gnome/Ptyxis]
 default-profile-uuid='d56dc9c4a26b1e189fe0e6e868a8656a'
 profile-uuids=['d56dc9c4a26b1e189fe0e6e868a8656a']
@@ -55,7 +60,7 @@ logout-prompt=false
 
 [org/gnome/TextEditor]
 indent-style='space'
-last-save-directory='file:///home/aatricks/Documents/Ecole/Archi'
+last-save-directory='file:///home/aatricks/Documents/Ecole'
 restore-session=true
 show-right-margin=false
 style-scheme='Adwaita'
@@ -69,8 +74,164 @@ window-maximized=false
 window-width=807
 
 [org/gnome/baobab/ui]
+active-chart='rings'
 is-maximized=false
 window-size=(960, 600)
+
+[org/gnome/builder]
+window-maximized=true
+window-size=(-1, -1)
+
+[org/gnome/builder/editor]
+style-scheme-name='Adwaita-dark'
+
+[org/gnome/builder/editor/language/automake]
+insert-spaces-instead-of-tabs=false
+insert-trailing-newline=true
+tab-width=8
+
+[org/gnome/builder/editor/language/blueprint]
+auto-indent=true
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=false
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/c-sharp]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=false
+overwrite-braces=true
+spaces-style=['before-left-paren']
+tab-width=8
+
+[org/gnome/builder/editor/language/c]
+auto-indent=true
+indent-width=2
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+spaces-style=['before-left-paren']
+tab-width=8
+
+[org/gnome/builder/editor/language/chdr]
+auto-indent=true
+indent-width=2
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+spaces-style=['before-left-paren']
+tab-width=8
+
+[org/gnome/builder/editor/language/commonlisp]
+auto-indent=true
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+overwrite-braces=true
+right-margin-position=100
+tab-width=2
+
+[org/gnome/builder/editor/language/cpp]
+auto-indent=true
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=4
+
+[org/gnome/builder/editor/language/css]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/gradle]
+auto-indent=true
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/html]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/java]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/js]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/makefile]
+insert-spaces-instead-of-tabs=false
+insert-trailing-newline=true
+tab-width=8
+
+[org/gnome/builder/editor/language/markdown]
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+tab-width=4
+trim-trailing-whitespace=false
+
+[org/gnome/builder/editor/language/python]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=4
+
+[org/gnome/builder/editor/language/python3]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=4
+
+[org/gnome/builder/editor/language/ruby]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/editor/language/rust]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+right-margin-position=100
+tab-width=4
+
+[org/gnome/builder/editor/language/vala]
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=4
+
+[org/gnome/builder/editor/language/xml]
+auto-indent=true
+insert-matching-brace=true
+insert-spaces-instead-of-tabs=true
+insert-trailing-newline=true
+overwrite-braces=true
+tab-width=2
+
+[org/gnome/builder/projects/blackbox-terminal]
+config-id='com.raggesilver.BlackBox.json'
 
 [org/gnome/calculator]
 base=10
@@ -83,7 +244,7 @@ window-maximized=false
 window-size=(396, 616)
 
 [org/gnome/control-center]
-last-panel='power'
+last-panel='display'
 window-state=(512, 536, false)
 
 [org/gnome/desktop/app-folders]
@@ -104,10 +265,10 @@ name='X-Pardus-Apps.directory'
 translate=true
 
 [org/gnome/desktop/app-folders/folders/SysApps]
-apps=['org.gnome.Extensions.desktop', 'org.gnome.Settings.desktop', 'org.gnome.FileRoller.desktop', 'cmake-gui.desktop', 'htop.desktop', 'fish.desktop', 'nixos-manual.desktop', 'vlc.desktop', 'io.github.Foldex.AdwSteamGtk.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Totem.desktop', 'yelp.desktop', 'org.gnome.Ptyxis.desktop', 'nvidia-settings.desktop', 'org.gnome.Console.desktop']
+apps=['org.gnome.Extensions.desktop', 'org.gnome.Settings.desktop', 'org.gnome.FileRoller.desktop', 'cmake-gui.desktop', 'htop.desktop', 'fish.desktop', 'nixos-manual.desktop', 'vlc.desktop', 'io.github.Foldex.AdwSteamGtk.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Totem.desktop', 'yelp.desktop', 'org.gnome.Ptyxis.desktop', 'nvidia-settings.desktop', 'org.gnome.Console.desktop', 'btop.desktop']
 
 [org/gnome/desktop/app-folders/folders/System]
-apps=['org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Logs.desktop', 'org.gnome.SystemMonitor.desktop']
+apps=['org.gnome.DiskUtility.desktop', 'org.gnome.Logs.desktop', 'org.gnome.SystemMonitor.desktop']
 name='X-GNOME-Shell-System.directory'
 translate=true
 
@@ -122,7 +283,7 @@ name='suse-yast.directory'
 translate=true
 
 [org/gnome/desktop/app-folders/folders/c7ad0a82-cd08-4e1d-80ec-a486732614ce]
-apps=['bvnc.desktop', 'bssh.desktop', 'avahi-discover.desktop', 'qv4l2.desktop', 'qvidcap.desktop']
+apps=['bvnc.desktop', 'bssh.desktop', 'avahi-discover.desktop', 'qv4l2.desktop', 'qvidcap.desktop', 'electron37.desktop']
 name='Internet'
 
 [org/gnome/desktop/applications/terminal]
@@ -158,7 +319,10 @@ xkb-options=@as []
 accent-color='slate'
 clock-format='24h'
 color-scheme='prefer-dark'
+cursor-theme='Adwaita'
 document-font-name='Adwaita Mono 11'
+font-antialiasing='grayscale'
+font-hinting='slight'
 font-name='Adwaita Sans 11'
 gtk-theme='Adwaita'
 icon-theme='Papirus'
@@ -168,7 +332,7 @@ text-scaling-factor=0.94999999999999996
 toolbar-style='text'
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-gnome-nautilus', 'vesktop', 'ca-desrt-dconf-editor', 'com-raggesilver-blackbox', 'dev-vencord-vesktop', 'org-gnome-software', 'com-valvesoftware-steam', 'com-spotify-client', 'org-zealdocs-zeal', 'org-gnome-console', 'zen', 'org-gnome-extensions', 'intellij-idea-community-edition', 'gnome-about-panel', 'jetbrains-idea', 'code-insiders']
+application-children=['gnome-power-panel', 'org-gnome-nautilus', 'vesktop', 'ca-desrt-dconf-editor', 'com-raggesilver-blackbox', 'dev-vencord-vesktop', 'org-gnome-software', 'com-valvesoftware-steam', 'com-spotify-client', 'org-zealdocs-zeal', 'org-gnome-console', 'zen', 'org-gnome-extensions', 'intellij-idea-community-edition', 'gnome-about-panel', 'jetbrains-idea', 'code-insiders', 'dev-zed-zed-preview', 'org-gnome-builder', 'org-gnome-baobab']
 show-banners=true
 
 [org/gnome/desktop/notifications/application/ca-desrt-dconf-editor]
@@ -189,6 +353,9 @@ application-id='com.valvesoftware.Steam.desktop'
 [org/gnome/desktop/notifications/application/dev-vencord-vesktop]
 application-id='dev.vencord.Vesktop.desktop'
 
+[org/gnome/desktop/notifications/application/dev-zed-zed-preview]
+application-id='dev.zed.Zed-Preview.desktop'
+
 [org/gnome/desktop/notifications/application/gnome-about-panel]
 application-id='gnome-about-panel.desktop'
 
@@ -200,6 +367,12 @@ application-id='intellij-idea-community-edition.desktop'
 
 [org/gnome/desktop/notifications/application/jetbrains-idea]
 application-id='jetbrains-idea.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-baobab]
+application-id='org.gnome.baobab.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-builder]
+application-id='org.gnome.Builder.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-console]
 application-id='org.gnome.Console.desktop'
@@ -248,16 +421,37 @@ secondary-color='#000000000000'
 enabled=['org.gnome.Weather.desktop']
 sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
 
+[org/gnome/desktop/sound]
+event-sounds=true
+theme-name='__custom'
+
 [org/gnome/desktop/wm/keybindings]
 maximize=@as []
 unmaximize=@as []
 
 [org/gnome/desktop/wm/preferences]
+action-double-click-titlebar='toggle-maximize'
+action-middle-click-titlebar='none'
+action-right-click-titlebar='menu'
 button-layout='appmenu:minimize,maximize,close'
 focus-mode='sloppy'
 
 [org/gnome/epiphany]
 ask-for-default=false
+
+[org/gnome/evince/default]
+continuous=true
+dual-page=false
+dual-page-odd-left=false
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=true
+sidebar-page='thumbnails'
+sidebar-size=132
+sizing-mode='automatic'
+window-ratio=(0.98039215686274506, 0.75757575757575757)
+zoom=0.88125670222920716
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -285,8 +479,11 @@ use-tree-view=true
 [org/gnome/nautilus/preferences]
 default-folder-viewer='list-view'
 migrated-gtk-settings=true
+recursive-search='always'
 search-filter-time-type='last_modified'
 show-delete-permanently=true
+show-directory-item-counts='always'
+show-image-thumbnails='always'
 
 [org/gnome/nautilus/window-state]
 initial-size=(890, 550)
@@ -309,7 +506,10 @@ last-folder-path='/home/aatricks/config'
 last-folder-path='/home/aatricks/Downloads'
 
 [org/gnome/portal/filechooser/dev.vencord.Vesktop]
-last-folder-path='/home/aatricks/Documents/Ecole/GestionP'
+last-folder-path='/home/aatricks/Pictures/Screenshots'
+
+[org/gnome/portal/filechooser/dev.zed.Zed-Preview]
+last-folder-path='/home/aatricks/Documents/Ecole/CapGemini/poly-gemimi'
 
 [org/gnome/portal/filechooser/org.chromium.Chromium]
 last-folder-path='/home/aatricks/Downloads'
@@ -324,7 +524,13 @@ last-folder-path='/home/aatricks/Documents/ArchiSI/serveurs'
 last-folder-path='/home/aatricks/Downloads'
 
 [org/gnome/portal/filechooser/org.gnome.TextEditor]
-last-folder-path='/home/aatricks/Documents/Ecole/Archi'
+last-folder-path='/home/aatricks/Documents/Ecole'
+
+[org/gnome/portal/filechooser/vesktop]
+last-folder-path='/home/aatricks/Downloads'
+
+[org/gnome/portal/filechooser/winboat]
+last-folder-path='/home/aatricks/Windows'
 
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
@@ -342,13 +548,20 @@ sleep-inactive-ac-timeout=3600
 sleep-inactive-battery-timeout=900
 
 [org/gnome/shell]
-app-picker-layout=[{'c7ad0a82-cd08-4e1d-80ec-a486732614ce': <{'position': <0>}>, 'Utilities': <{'position': <1>}>, 'SysApps': <{'position': <2>}>, 'org.gnome.TextEditor.desktop': <{'position': <3>}>, 'org.gnome.Nautilus.desktop': <{'position': <4>}>, 'org.zealdocs.Zeal.desktop': <{'position': <5>}>, 'steam.desktop': <{'position': <6>}>, 'com.spotify.Client.desktop': <{'position': <7>}>, 'dev.vencord.Vesktop.desktop': <{'position': <8>}>, 'jetbrains-idea.desktop': <{'position': <9>}>}]
+app-picker-layout=[{'c7ad0a82-cd08-4e1d-80ec-a486732614ce': <{'position': <0>}>, 'Utilities': <{'position': <1>}>, 'SysApps': <{'position': <2>}>, 'org.gnome.TextEditor.desktop': <{'position': <3>}>, 'org.gnome.Nautilus.desktop': <{'position': <4>}>, 'vesktop.desktop': <{'position': <5>}>, 'com.spotify.Client.desktop': <{'position': <6>}>}]
 disable-user-extensions=false
-disabled-extensions=['window-list@gnome-shell-extensions.gcampax.github.com', 'blur-my-shell@aunetx', 'light-style@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'caffeine@patapon.info', 'appindicatorsupport@rgcjonas.gmail.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'quick-settings-audio-panel@rayzeq.github.io', 'weatheroclock@CleoMenezesJr.github.io', 'GPU_profile_selector@lorenzo9904.gmail.com', 'arch-update@RaphaelRochet', 'vicinae@dagimg-dot', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'transparent-top-bar@ftpix.com', 'tiling-assistant@leleat-on-github']
-favorite-apps=['com.raggesilver.BlackBox.desktop', 'zen.desktop', 'code-insiders.desktop']
+disabled-extensions=['window-list@gnome-shell-extensions.gcampax.github.com', 'blur-my-shell@aunetx', 'light-style@gnome-shell-extensions.gcampax.github.com', 'status-icons@gnome-shell-extensions.gcampax.github.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'system-monitor@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'caffeine@patapon.info', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'weatheroclock@CleoMenezesJr.github.io', 'GPU_profile_selector@lorenzo9904.gmail.com', 'arch-update@RaphaelRochet', 'vicinae@dagimg-dot', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'transparent-top-bar@ftpix.com', 'tiling-assistant@leleat-on-github', 'appindicatorsupport@rgcjonas.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'quick-settings-audio-panel@rayzeq.github.io']
+favorite-apps=['com.raggesilver.BlackBox.desktop', 'zen.desktop', 'dev.warp.Warp.desktop', 'code-insiders.desktop']
 last-selected-power-profile='power-saver'
 welcome-dialog-last-shown-version='48.2'
+
+[org/gnome/shell/extensions/appindicator]
+icon-brightness=0.0
+icon-contrast=0.0
+icon-opacity=240
+icon-saturation=0.0
+icon-size=0
 
 [org/gnome/shell/extensions/blur-my-shell]
 hacks-level=0
@@ -447,8 +660,19 @@ enabled=false
 show-extensions-notice=false
 
 [org/gtk/gtk4/settings/file-chooser]
-show-hidden=true
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+sidebar-width=140
+sort-column='name'
 sort-directories-first=true
+sort-order='ascending'
+type-format='category'
+view-type='list'
+window-size=(861, 372)
+
+[org/gtk/settings/color-chooser]
+selected-color=(true, 0.75294117647058822, 0.10980392156862745, 0.15686274509803921, 1.0)
 
 [org/gtk/settings/file-chooser]
 clock-format='24h'
@@ -464,3 +688,12 @@ sort-order='descending'
 type-format='category'
 window-position=(26, 23)
 window-size=(1116, 816)
+
+[org/nemo/window-state]
+geometry='800x550+26+23'
+maximized=false
+side-pane-view='tree'
+sidebar-bookmark-breakpoint=3
+start-with-menu-bar=false
+start-with-sidebar=true
+start-with-toolbar=false

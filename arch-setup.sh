@@ -56,7 +56,7 @@ configure_pacman() {
 # --- Base tools and mirrors ---
 install_base_tools_and_mirrors() {
     LOG "Installing base tools and refreshing mirrors..."
-    sudo pacman -S --noconfirm --needed reflector git curl base-devel nano htop
+    sudo pacman -S --noconfirm --needed reflector git curl base-devel nano btop vim
 
     # Backup and refresh mirrorlist with reflector
     if command -v reflector >/dev/null 2>&1; then
@@ -200,24 +200,30 @@ install_apps() {
         vesktop-bin \
         zen-browser-bin \
         envycontrol \
-        flatpak \
         fish \
         gnome-extensions-cli \
         arch-update \
         papirus-icon-theme \
         ufw \
-        gamemode \
-        lib32-gamemode \
-        lib32-nvidia-utils \
-        proton-ge-custom-bin \
-        steam
+
 
     systemctl enable ufw
 
     arch-update --tray --enable
     systemctl --user enable --now arch-update.timer
 
-    sudo usermod -aG gamemode aatricks
+    if read -rp "Install Proton-GE and Steam for gaming? (y/N): " REPLY || REPLY="n"; [[ $REPLY =~ ^[Yy]$ ]]; then
+        paru -S --noconfirm --needed \
+            gamemode \
+            lib32-gamemode \
+            lib32-nvidia-utils \
+            proton-ge-custom-bin \
+            steam
+
+        sudo usermod -aG gamemode aatricks
+    else
+        LOG "Skipping gaming tools."
+    fi 
 }
 
 install_fonts() {
@@ -249,24 +255,6 @@ install_extensions() {
         
         # gext install blur-my-shell@aunetx 
     fi
-}
-
-# --- Flatpak apps ---
-install_flatpaks() {
-    LOG "Installing Flatpak applications..."
-    if ! command -v flatpak >/dev/null 2>&1; then
-        WARN "flatpak not installed; skipping Flatpak apps."
-        return
-    fi
-    # Ensure flathub remote exists
-    if ! flatpak remotes --columns=name | grep -qx flathub; then
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    fi
-
-    flatpak install -y flathub \
-        com.mattjakeman.ExtensionManager \
-        page.tesk.Refine \
-        org.gnome.Extensions || WARN "Some Flatpak installs may have failed"
 }
 
 # --- Default shell: fish ---
@@ -395,7 +383,6 @@ main() {
     install_video_drivers
     set_environment_vars
     install_apps
-    install_flatpaks
     apply_gnome_settings
     set_fish_default_shell
     setup_laptop
