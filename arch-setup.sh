@@ -92,7 +92,7 @@ install_gnome() {
     sudo pacman -S --noconfirm --needed \
         gnome-shell gdm gnome-console gnome-control-center gnome-keyring gnome-menus \
         gnome-session gnome-settings-daemon gnome-shell-extensions gnome-text-editor \
-        nautilus gnome-weather gnome-tweaks
+        nautilus gnome-weather
     sudo systemctl enable gdm.service
 }
 
@@ -224,6 +224,51 @@ install_apps() {
     else
         LOG "Skipping gaming tools."
     fi 
+}
+
+install_lazyfinder() {
+    LOG "Installing lazyfinder (AUR)..."
+    if ! command -v paru >/dev/null 2>&1; then install_paru; fi
+    paru -S --noconfirm --needed fzf
+    mkdir -p ~/.config/fish/functions
+    sudo tee ~/.config/fish/functions/finstall.fish >/dev/null <<'EOF'
+# ~/.config/fish/functions/finstall.fish
+
+function finstall
+    # Get a list of all repo and AUR packages, remove duplicates, and pipe to fzf
+    # -Slq: Lists all packages from repos paru knows (pacman + AUR)
+    # --preview: Shows package info (paru -Si) on the right
+    # --multi:
+    #   Allows selecting multiple packages with Tab or Shift+Tab
+    #   On Arch, fzf is often compiled with --multi by default, but it's good to be explicit.
+    set -l pkgs (paru -Slq | sort -u | fzf --multi --preview "paru -Si {}")
+
+    # If the user selected at least one package (pkgs is not empty)
+    if test -n "$pkgs"
+        # Install the selected package(s)
+        paru -S $pkgs
+    end
+end
+EOF
+
+    sudo tee ~/.config/fish/functions/funinstall.fish >/dev/null <<'EOF'
+# ~/.config/fish/functions/funinstall.fish
+
+function funinstall
+    # Get a list of all *installed* packages (pacman -Qq) and pipe to fzf
+    # --preview: Shows info for the *installed* package (pacman -Qi)
+    set -l pkgs (pacman -Qq | fzf --multi --preview "pacman -Qi {}")
+
+    if test -n "$pkgs"
+        # Remove the selected package(s)
+        # -R: Remove
+        # -n: Don't save config files
+        # -s: Remove dependencies (recursively)
+        paru -Rns $pkgs
+    end
+end
+EOF
+    LOG "lazyyfinder installed. Use 'finstall' to install packages and 'funinstall' to remove packages."
 }
 
 install_fonts() {
@@ -385,12 +430,14 @@ main() {
     install_apps
     apply_gnome_settings
     set_fish_default_shell
+    install_lazyfinder
     setup_laptop
     enable_bluetooth
+    install_fonts
     setup_nvidia_containers
     install_uv
     install_extensions
-    install_fonts
+    
 
     LOG "Setup complete."
     read -rp "Reboot now? (y/N): " REPLY || REPLY="n"
