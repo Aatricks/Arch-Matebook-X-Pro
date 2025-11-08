@@ -87,8 +87,7 @@ install_paru() {
 
 # --- GNOME Desktop ---
 install_gnome() {
-    LOG "Installing Xorg and GNOME..."
-    sudo pacman -S --noconfirm --needed xorg
+    LOG "Installing GNOME..."
     sudo pacman -S --noconfirm --needed \
         gnome-shell gdm gnome-console gnome-control-center gnome-keyring gnome-menus \
         gnome-session gnome-settings-daemon gnome-shell-extensions gnome-text-editor \
@@ -295,10 +294,9 @@ install_extensions() {
             appindicatorsupport@rgcjonas.gmail.com \
             weatheroclock@CleoMenezesJr.github.io \
             quick-settings-audio-panel@rayzeq.github.io \
-            transparent-top-bar@ftpix.com \
-            tiling-assistant@leleat-on-github
-        
-        # gext install blur-my-shell@aunetx 
+            blur-my-shell@aunetx 
+            
+        # transparent-top-bar@ftpix.com
     fi
 }
 
