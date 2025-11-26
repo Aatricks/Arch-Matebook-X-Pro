@@ -69,18 +69,18 @@ install_base_tools_and_mirrors() {
     fi
 }
 
-# --- AUR helper (paru) ---
-install_paru() {
-    if command -v paru >/dev/null 2>&1; then
-        LOG "paru already installed."
+# --- AUR helper (yay) ---
+install_yay() {
+    if command -v yay >/dev/null 2>&1; then
+        LOG "yay already installed."
         return
     fi
-    LOG "Installing paru (AUR helper)..."
+    LOG "Installing yay (AUR helper)..."
     sudo pacman -S --noconfirm --needed base-devel git
     tmpdir=$(mktemp -d)
     trap 'rm -rf "$tmpdir"' EXIT
-    git clone https://aur.archlinux.org/paru.git "$tmpdir/paru"
-    pushd "$tmpdir/paru" >/dev/null
+    git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay"
+    pushd "$tmpdir/yay" >/dev/null
     makepkg -si --noconfirm
     popd >/dev/null
 }
@@ -126,9 +126,9 @@ install_cpu_tools() {
 configure_undervolt() {
     read -rp "Install and apply intel-undervolt settings? (y/N): " REPLY || REPLY="n"
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        if ! command -v paru >/dev/null 2>&1; then install_paru; fi
+        if ! command -v yay >/dev/null 2>&1; then install_yay; fi
         LOG "Installing intel-undervolt (AUR)..."
-        paru -S --noconfirm --needed intel-undervolt || WARN "Failed to install intel-undervolt"
+        yay -S --noconfirm --needed intel-undervolt || WARN "Failed to install intel-undervolt"
 
         LOG "Writing undervolt configuration..."
         # Correct path for Arch package is /etc/intel-undervolt.conf
@@ -192,8 +192,8 @@ apply_gnome_settings() {
 # --- Applications (pacman/AUR) ---
 install_apps() {
     LOG "Installing applications (AUR included)..."
-    if ! command -v paru >/dev/null 2>&1; then install_paru; fi
-    paru -S --noconfirm --needed \
+    if ! command -v yay >/dev/null 2>&1; then install_yay; fi
+    yay -S --noconfirm --needed \
         visual-studio-code-insiders-bin \
         blackbox-terminal \
         vesktop-bin \
@@ -212,7 +212,7 @@ install_apps() {
     systemctl --user enable --now arch-update.timer
 
     if read -rp "Install Proton-GE and Steam for gaming? (y/N): " REPLY || REPLY="n"; [[ $REPLY =~ ^[Yy]$ ]]; then
-        paru -S --noconfirm --needed \
+        yay -S --noconfirm --needed \
             gamemode \
             lib32-gamemode \
             lib32-nvidia-utils \
@@ -227,43 +227,51 @@ install_apps() {
 
 install_lazyfinder() {
     LOG "Installing lazyfinder (AUR)..."
-    if ! command -v paru >/dev/null 2>&1; then install_paru; fi
-    paru -S --noconfirm --needed fzf
+    if ! command -v yay >/dev/null 2>&1; then install_yay; fi
+    yay -S --noconfirm --needed fzf
     mkdir -p ~/.config/fish/functions
     sudo tee ~/.config/fish/functions/finstall.fish >/dev/null <<'EOF'
-# ~/.config/fish/functions/finstall.fish
-
 function finstall
-    # Get a list of all repo and AUR packages, remove duplicates, and pipe to fzf
-    # -Slq: Lists all packages from repos paru knows (pacman + AUR)
-    # --preview: Shows package info (paru -Si) on the right
-    # --multi:
-    #   Allows selecting multiple packages with Tab or Shift+Tab
-    #   On Arch, fzf is often compiled with --multi by default, but it's good to be explicit.
-    set -l pkgs (paru -Slq | sort -u | fzf --multi --preview "paru -Si {}")
+    echo ":: Fetching package lists..."
 
-    # If the user selected at least one package (pkgs is not empty)
-    if test -n "$pkgs"
-        # Install the selected package(s)
-        paru -S $pkgs
+    # Stream 1: Repo packages (via pacman, fast & clean)
+    # Stream 2: AUR packages (via curl, bypasses local DB corruption)
+    # We prefix AUR packages with "AUR/" so you can distinguish them.
+    set -l selected (
+        begin
+            pacman -Slq
+            curl -s "https://aur.archlinux.org/packages.gz" | gzip -d | grep -v "^#" | sed 's/^/AUR\//'
+        end | fzf --multi --height=90% --layout=reverse --prompt="Install > " \
+            --preview "echo {} | sed 's|^AUR/||' | xargs -I% yay -Si %" \
+            --header="Tab: Select Multi | Enter: Install"
+    )
+
+    if test -n "$selected"
+        # Strip the "AUR/" prefix from the selected names
+        set -l clean_pkgs
+        for p in $selected
+            set clean_pkgs $clean_pkgs (string replace "AUR/" "" $p)
+        end
+
+        echo ":: Installing: $clean_pkgs"
+        yay -S $clean_pkgs
     end
 end
 EOF
 
     sudo tee ~/.config/fish/functions/funinstall.fish >/dev/null <<'EOF'
-# ~/.config/fish/functions/funinstall.fish
-
 function funinstall
-    # Get a list of all *installed* packages (pacman -Qq) and pipe to fzf
-    # --preview: Shows info for the *installed* package (pacman -Qi)
-    set -l pkgs (pacman -Qq | fzf --multi --preview "pacman -Qi {}")
+    # Source: pacman -Qqe (Lists ONLY explicitly installed packages)
+    # Filter: grep -v (Protects 'base', 'linux', and 'filesystem' from appearing)
+    # Action: yay -Rns (Recursive Clean Remove)
+    
+    set -l pkgs (pacman -Qqe | grep -v -E '^(base|base-devel|linux|linux-firmware|filesystem)$' | fzf --multi --height=90% --layout=reverse --prompt="Uninstall > " \
+        --preview "pacman -Qi {}" \
+        --header="Tab: Select Multi | Enter: Remove (explicit only)")
 
     if test -n "$pkgs"
-        # Remove the selected package(s)
-        # -R: Remove
-        # -n: Don't save config files
-        # -s: Remove dependencies (recursively)
-        paru -Rns $pkgs
+        echo ":: Removing: $pkgs"
+        yay -Rns $pkgs
     end
 end
 EOF
@@ -272,8 +280,8 @@ EOF
 
 install_fonts() {
     LOG "Installing additional fonts..."
-    if ! command -v paru >/dev/null 2>&1; then install_paru; fi
-    paru -S --noconfirm --needed otf-monaspace \
+    if ! command -v yay >/dev/null 2>&1; then install_yay; fi
+    yay -S --noconfirm --needed otf-monaspace \
         ttf-ms-fonts \
         ttf-liberation \
         noto-fonts \
@@ -355,8 +363,8 @@ setup_laptop() {
         if lspci | grep -qi nvidia; then
             read -rp "Configure EnvyControl for NVIDIA Optimus (set to integrated)? (y/N): " REPLY || REPLY="n"
             if [[ $REPLY =~ ^[Yy]$ ]]; then
-                if ! command -v paru >/dev/null 2>&1; then install_paru; fi
-                paru -S --noconfirm --needed envycontrol
+                if ! command -v yay >/dev/null 2>&1; then install_yay; fi
+                yay -S --noconfirm --needed envycontrol
                 sudo envycontrol -s integrated || WARN "envycontrol failed"
             fi
         fi
@@ -384,8 +392,8 @@ setup_nvidia_containers() {
             sudo pacman -S --noconfirm --needed docker docker-compose
             sudo systemctl enable docker.service || true
             sudo systemctl enable docker.socket || true
-            if command -v paru >/dev/null 2>&1; then
-                paru -S --noconfirm --needed nvidia-container-toolkit || WARN "Failed to install nvidia-container-toolkit"
+            if command -v yay >/dev/null 2>&1; then
+                yay -S --noconfirm --needed nvidia-container-toolkit || WARN "Failed to install nvidia-container-toolkit"
             else
                 sudo pacman -S --noconfirm --needed nvidia-container-toolkit || WARN "Failed to install nvidia-container-toolkit"
             fi
@@ -419,7 +427,7 @@ main() {
     prepare_environment
     configure_pacman
     install_base_tools_and_mirrors
-    install_paru
+    install_yay
     install_gnome
     install_cpu_tools
     configure_tlp
